@@ -173,6 +173,7 @@ class Producto{
         $sql = "SELECT * FROM productos WHERE id = $id";
 
         $product = $this->db->query($sql);
+        
 
         return $product;
     }

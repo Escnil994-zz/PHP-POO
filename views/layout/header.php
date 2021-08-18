@@ -48,8 +48,13 @@
                     <a href="<?=base_url?>categoria/showProduct&product=<?=$cat->id?>&category=<?=$cat->nombre?>"><?=$cat->nombre?></a>
                 </li>
             <?php endwhile; ?>
+                
+                
+                
 
         </ul>
+                                 
+
     </nav>
 
 

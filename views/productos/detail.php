@@ -74,9 +74,7 @@
 
                 <h4 class="text-danger">$
                     <del><?= $product->precio ?></del>
-                    <strong class="text-dark">-</strong> <strong class="btn btn-secondary">   <?= $product->oferta ?>%
-                        De
-                        Descuento</strong></h4>
+                    <strong class="text-dark">-</strong> <strong class="btn btn-secondary">   <?= $product->oferta ?>% De Descuento</strong></h4>
 
 
                 <h4 class="text-success">
@@ -84,40 +82,39 @@
 
                 <br>
                 <h3>TALLA:</h3>
-                <form action="<?= base_url ?>carrito/add" method="POST">
 
-
+                <form action="<?= base_url ?>carrito/add&product=<?=$product->id?>&name=<?=$product->nombre?>&details=<?=$product->descripcion?>" method="POST">
                     <div class="list-group switch-field" id="list-tab" role="tablist">
-                        <input class="talla" type="radio" name="talla" id="1" value="model__none" disabled="">
+                        <input class="talla" type="radio" name="talla" id="1" value="talla-none" disabled="">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="1"><strike
                                     style="color:#CCC;">0</strike></label>
-                        <input class="talla" type="radio" name="talla" id="2" value="model__2">
+                        <input class="talla" type="radio" name="talla" id="2" value="talla-2">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="2">2</label>
-                        <input class="talla" type="radio" name="talla" id="3" value="model__4">
+                        <input class="talla" type="radio" name="talla" id="3" value="talla-4">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="3">4</label>
-                        <input class="talla" type="radio" name="talla" id="4" value="model__6">
+                        <input class="talla" type="radio" name="talla" id="4" value="talla-6">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="4">6</label>
-                        <input class="talla" type="radio" name="talla" id="5" value="model__8">
+                        <input class="talla" type="radio" name="talla" id="5" value="talla-8">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="5">8</label>
-                        <input class="talla" type="radio" name="talla" id="6" value="model__10">
+                        <input class="talla" type="radio" name="talla" id="6" value="talla-10">
                         <label class="list-group-item list-group-item-action" id="list-profile-list"
                                data-bs-toggle="list"
                                href="#list-profile" role="tab" aria-controls="list-profile" for="6">10</label>
-                        <input class="talla" type="radio" name="talla" id="7" value="model__12">
+                        <input class="talla" type="radio" name="talla" id="7" value="talla-12">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="7">12</label>
-                        <input class="talla" type="radio" name="talla" id="8" value="model__14">
+                        <input class="talla" type="radio" name="talla" id="8" value="talla-14">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="8">14</label>
-                        <input class="talla" type="radio" name="talla" id="9" value="model__16">
+                        <input class="talla" type="radio" name="talla" id="9" value="talla-16">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="9">16</label>
-                        <input class="talla" type="radio" name="talla" id="10" value="model__18">
+                        <input class="talla" type="radio" name="talla" id="10" value="talla-18">
                         <label class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                                href="#list-home" role="tab" aria-controls="list-home" for="10">18</label>
                     </div>
@@ -159,14 +156,13 @@
                         <label class="form-check-label" for="inlineRadio2">6</label>
                     </div>
 
-                    <label for="cantidad">Ingresa la cantidad que necesitas</label>
-                    <input type="number" name="cantidad">
+                   
                     <br>
 
-                    <input type="submit" class="btn btn-primary text-white mt-3" id="carrito"
-                           style="text-decoration: none;">Agregar al carrito</input>
-
+                    <input type="submit" value="Agregar al carrito" class="btn btn-primary text-white mt-3"  id="carrito">
                 </form>
+
+                
                 <br><br><br>
                 <table class="product-detail" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
