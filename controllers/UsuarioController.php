@@ -46,7 +46,7 @@ class usuarioController {
         header("Location:" . base_url . 'usuario/registrar');
     }
 
-    public function login() {
+    public function login($exit=true) {
         if (isset($_POST)) {
             //Identificar al usuario
             //Consulta a la base de datos
@@ -63,13 +63,29 @@ class usuarioController {
                     $_SESSION['admin'] = true;
                 }
             } else {
+
+
                 $_SESSION['error_login'] = 'Identificación fallida';
             }
         }
-        header('Location:' . base_url);
+
+
+        print '<html>';
+        print '<head><title>Redirecting you...</title>';
+        print '<meta http-equiv="Refresh" content="0;url='.base_url.'" />';
+        print '</head>';
+        print '<body onload="location.replace(\''.base_url.'\')">';
+    print "You're getting...<br />";
+    print 'If you are not, please click on the link above.<br />';
+    print "<a  href=".base_url.">Click aqui</a>";
+    print '</body>';
+    print '</html>';
+    if ($exit) exit;
+
+
     }
 
-    public function logout() {
+    public function logout($exit = true) {
         if ($_SESSION['logged_in']) {
             $_SESSION['logged_in'] = null;
             unset($_SESSION['logged_in']);
@@ -87,7 +103,17 @@ class usuarioController {
         }
 
 
-        header('Location:' . base_url);
+        print '<html>';
+        print '<head><title>Redirecting you...</title>';
+        print '<meta http-equiv="Refresh" content="0;url='.base_url.'" />';
+        print '</head>';
+        print '<body onload="location.replace(\''.base_url.'\')">';
+        print "You're logging out...<br />";
+        print 'If you are not, please click on the link above.<br />';
+        print "<a  href=".base_url.">Click aqui</a>";
+        print '</body>';
+        print '</html>';
+        if ($exit) exit;
     }
 
 }

@@ -6,6 +6,8 @@
 
     require_once 'config/db.php';
 
+    require_once 'config/db02.php';
+
     require_once 'config/parameters.php';
 
     require_once 'helpers/utils.php';

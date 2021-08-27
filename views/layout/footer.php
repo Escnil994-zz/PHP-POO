@@ -11,6 +11,9 @@
 </footer>
 
 
+<script type="application/javascript" src="<?=base_url?>assets/js/utils.js"></script>
+
+
 </body>
 
 </html>

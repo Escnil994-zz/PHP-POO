@@ -13,9 +13,8 @@ class CarritoController {
         require_once('views/carrito/index.php');
     }
 
-    public function add() {
+    public function add($exit = true) {
 
-        if (!empty($_SESSION['logged_in'])) {
 
             $talla = '';
             if (isset($_POST['talla']) && !empty($_POST['talla'])) {
@@ -59,20 +58,30 @@ class CarritoController {
                             "precio" => (double) number_format($producto->precio - ((($producto->precio) / 100) * $producto->oferta), 2),
                             "unidades" => (int) $cantidad,
                             "talla" => $talla,
-                            "imagen" => $producto->imagen
+                            "imagen" => $producto->imagen,
+                            "producto" => $producto
                         );
                     }
                 }
 
-                header('Location:' . base_url . 'carrito/index');
+
+                print '<html>';
+                print '<head><title>Redirecting you...</title>';
+                print '<meta http-equiv="Refresh" content="0;url='.base_url.'carrito/index" />';
+                print '</head>';
+                print '<body onload="location.replace(\''.base_url.'carrito/index\')">';
+                print "You're getting...<br />";
+                print 'If you are not, please click on the link above.<br />';
+                print "<a  href=".base_url.">Click aqui</a>";
+                print '</body>';
+                print '</html>';
+                if ($exit) exit;
             }
-        }
-        else{
-            var_dump('Debe iniciar sesion antes ');
-        }
+
+
     }
 
-    public function removeAll() {
+    public function removeAll($exit=true) {
 
         $cant = (int) $_GET['cantidad'];
 
@@ -87,14 +96,23 @@ class CarritoController {
                 }
             }
         } else {
-            var_dump($_SESSION['carrito']);
         }
 
 
-        header('Location:' . base_url . 'carrito/index');
+                print '<html>';
+                print '<head><title>Redirecting you...</title>';
+                print '<meta http-equiv="Refresh" content="0;url='.base_url.'carrito/index" />';
+                print '</head>';
+                print '<body onload="location.replace(\''.base_url.'carrito/index\')">';
+                print "You're getting...<br />";
+                print 'If you are not, please click on the link above.<br />';
+                print "<a  href=".base_url.">Click aqui</a>";
+                print '</body>';
+                print '</html>';
+                if ($exit) exit;
     }
 
-    public function removeOne() {
+    public function removeOne($exit=true) {
 
         $cant = (int) $_GET['cantidad'];
 
@@ -109,19 +127,38 @@ class CarritoController {
                 }
             }
         } else {
-            var_dump($_SESSION['carrito']);
         }
 
 
-        header('Location:' . base_url . 'carrito/index');
+        print '<html>';
+        print '<head><title>Redirecting you...</title>';
+        print '<meta http-equiv="Refresh" content="0;url='.base_url.'carrito/index" />';
+        print '</head>';
+        print '<body onload="location.replace(\''.base_url.'carrito/index\')">';
+        print "You're getting...<br />";
+        print 'If you are not, please click on the link above.<br />';
+        print "<a  href=".base_url.">Click aqui</a>";
+        print '</body>';
+        print '</html>';
+        if ($exit) exit;
     }
 
-    public function delete() {
+    public function delete($exit = true) {
         unset(
                 $_SESSION['carrito']
         );
 
-        header('Location:' . base_url . 'carrito/index');
+        print '<html>';
+        print '<head><title>Redirecting you...</title>';
+        print '<meta http-equiv="Refresh" content="0;url='.base_url.'carrito/index" />';
+        print '</head>';
+        print '<body onload="location.replace(\''.base_url.'carrito/index\')">';
+        print "You're getting...<br />";
+        print 'If you are not, please click on the link above.<br />';
+        print "<a  href=".base_url.">Click aqui</a>";
+        print '</body>';
+        print '</html>';
+        if ($exit) exit;
     }
 
 }
