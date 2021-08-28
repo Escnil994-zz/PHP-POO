@@ -92,6 +92,7 @@ class PedidoController
             if ($save && $save_linea) {
 
                 $_SESSION['pedido'] = 'complete';
+                unset($_SESSION['carrito']);
                 $this->confirmado();
 
             } else {
@@ -118,6 +119,18 @@ class PedidoController
     }
 
     public function confirmado(){
+
+        if (isset($_SESSION['logged_in'])){
+            $user = $_SESSION['logged_in'];
+            $pedido = new Pedido();
+            $pedido->setUsuario($user->id);
+
+            $_pedido = $pedido->getOneByUser();
+
+            $productByPedido = $pedido->getProductsByPedido($_pedido->id);
+        }
+
+
         require_once 'views/pedido/confirmado.php';
     }
 }

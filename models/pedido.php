@@ -2,6 +2,7 @@
 
 class Pedido{
 
+    private $id;
     private $municipio;
     private $departamento;
     private $usuario;
@@ -68,6 +69,22 @@ class Pedido{
     public function getDireccion()
     {
         return $this->direccion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -210,7 +227,25 @@ class Pedido{
 
 
     }
+    public function getOneByUser(){
+        $sql = "SELECT p.id, p.coste FROM pedidos p "
+                    ."WHERE usuario_id = {$this->getUsuario()} ORDER BY id DESC LIMIT 1";
 
+        $pedido = $this->db2->query($sql);
+
+        return $pedido->fetch_object();
+    }
+
+    public function getProductsByPedido($pedido_id){
+        //$sql = "SELECT * FROM productos WHERE id IN (SELECT producto_id FROM lineas_pedidos WHERE pedido_id = {$pedido_id})";
+
+        $sql = "SELECT pr.*, lp.unidades FROM productos pr INNER JOIN lineas_pedidos lp ON pr.id = lp.producto_id WHERE lp.pedido_id = $pedido_id";
+
+        $products = $this->db2->query($sql);
+
+        return $products;
+
+    }
 }
 
 
